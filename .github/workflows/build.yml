@@ -28,6 +28,10 @@ jobs:
         working-directory: ./MoldHealth
         run: npm ci
 
+      - name: Lint PCF (MoldHealth)
+        working-directory: ./MoldHealth
+        run: npm run lint
+
       - name: Build PCF (MoldHealth)
         working-directory: ./MoldHealth
         run: npm run build
@@ -35,6 +39,10 @@ jobs:
       - name: Install dependencies (MoldMakerDataCard)
         working-directory: ./MoldMakerDataCard
         run: npm ci
+
+      - name: Lint PCF (MoldMakerDataCard)
+        working-directory: ./MoldMakerDataCard
+        run: npm run lint
 
       - name: Build PCF (MoldMakerDataCard)
         working-directory: ./MoldMakerDataCard
