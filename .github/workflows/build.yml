@@ -1,0 +1,38 @@
+name: Build PCF
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        working-directory: ./MoldHealth
+        run: npm ci
+
+      - name: Build PCF
+        working-directory: ./MoldHealth
+        run: npm run build
+
+      - name: Restore Solution
+        working-directory: ./MoldHealthSolution
+        run: dotnet restore
+
+      - name: Build Solution
+        working-directory: ./MoldHealthSolution
+        run: dotnet build
