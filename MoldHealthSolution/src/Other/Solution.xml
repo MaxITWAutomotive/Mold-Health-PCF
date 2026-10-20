@@ -90,6 +90,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="66" schemaName="itw_ITW.Controls.MoldHealth" behavior="0" />
+      <RootComponent type="66" schemaName="itw_ITW.Controls.MoldMakerDataCard" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>

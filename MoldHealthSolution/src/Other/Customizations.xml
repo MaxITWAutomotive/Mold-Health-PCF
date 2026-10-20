@@ -13,6 +13,9 @@
     <CustomControl Name="itw_ITW.Controls.MoldHealth">
       <FileName>/Controls/itw_ITW.Controls.MoldHealth/ControlManifest.xml</FileName>
     </CustomControl>
+    <CustomControl Name="itw_ITW.Controls.MoldMakerDataCard">
+      <FileName>/Controls/itw_ITW.Controls.MoldMakerDataCard/ControlManifest.xml</FileName>
+    </CustomControl>
   </CustomControls>
   <SolutionPluginAssemblies />
   <EntityDataProviders />

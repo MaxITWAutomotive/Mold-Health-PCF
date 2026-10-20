@@ -56,6 +56,13 @@
       <OutputItemType>Content</OutputItemType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="..\MoldMakerDataCard\MoldMakerDataCard.pcfproj">
+      <Project>{a1c2e3f4-5b6a-7890-abcd-ef1234567890}</Project>
+      <Name>MoldMakerDataCard</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

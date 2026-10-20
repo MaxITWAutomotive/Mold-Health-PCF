@@ -1,0 +1,161 @@
+.itw-mmd-host {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: auto;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+  color: #323130;
+  background: transparent;
+}
+
+.itw-mmd-form {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.itw-mmd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.itw-mmd-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #323130;
+}
+
+.itw-mmd-value {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  background: #faf9f8;
+  color: #323130;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.itw-mmd-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.itw-mmd-status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.itw-mmd-status-pill--running {
+  background: #dff6dd;
+  color: #107c10;
+  border: 1px solid #107c10;
+}
+
+.itw-mmd-status-pill--stopped {
+  background: #edebe9;
+  color: #605e5c;
+  border: 1px solid #a19f9d;
+}
+
+.itw-mmd-divider {
+  width: 100%;
+  height: 1px;
+  background: #edebe9;
+  border: 0;
+  margin: 2px 0;
+}
+
+.itw-mmd-progress-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.itw-mmd-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #605e5c;
+}
+
+.itw-mmd-progress-track {
+  box-sizing: border-box;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background: #edebe9;
+  overflow: hidden;
+}
+
+.itw-mmd-progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.2s ease, background-color 0.2s ease;
+  min-width: 0;
+}
+
+.itw-mmd-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+
+.itw-mmd-stat {
+  flex: 1 1 120px;
+  min-width: 0;
+}
+
+.itw-mmd-stat-label {
+  font-size: 11px;
+  color: #605e5c;
+  margin-bottom: 2px;
+}
+
+.itw-mmd-stat-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #323130;
+}
+
+.itw-mmd-meta-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itw-mmd-meta-label {
+  color: #605e5c;
+  flex-shrink: 0;
+}
+
+.itw-mmd-meta-value {
+  color: #323130;
+  text-align: right;
+  word-break: break-word;
+}
