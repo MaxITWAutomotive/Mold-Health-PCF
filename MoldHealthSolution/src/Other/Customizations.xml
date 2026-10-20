@@ -10,10 +10,10 @@
   <OrganizationSettings />
   <optionsets />
   <CustomControls>
-    <CustomControl Name="itw_ITW.Controls.MoldHealth">
+    <CustomControl Name="itw_ITW.Controls.MoldHealth" CompatibleDataTypes="0">
       <FileName>/Controls/itw_ITW.Controls.MoldHealth/ControlManifest.xml</FileName>
     </CustomControl>
-    <CustomControl Name="itw_ITW.Controls.MoldMakerDataCard">
+    <CustomControl Name="itw_ITW.Controls.MoldMakerDataCard" CompatibleDataTypes="0">
       <FileName>/Controls/itw_ITW.Controls.MoldMakerDataCard/ControlManifest.xml</FileName>
     </CustomControl>
   </CustomControls>

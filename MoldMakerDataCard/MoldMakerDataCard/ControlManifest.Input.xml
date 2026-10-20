@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="ITW.Controls" constructor="MoldMakerDataCard" version="1.0.0" display-name-key="MoldMakerDataCard_Display" description-key="MoldMakerDataCard_Desc" control-type="standard">
+  <control namespace="ITW.Controls" constructor="MoldMakerDataCard" version="1.0.1" display-name-key="MoldMakerDataCard_Display" description-key="MoldMakerDataCard_Desc" control-type="standard">
     <external-service-usage enabled="false">
     </external-service-usage>
     <property name="toolName" display-name-key="ToolName_Display" description-key="ToolName_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <property name="location" display-name-key="Location_Display" description-key="Location_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <property name="runningStatus" display-name-key="RunningStatus_Display" description-key="RunningStatus_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="'Stopped'" />
-    <property name="currentCycles" display-name-key="CurrentCycles_Display" description-key="CurrentCycles_Desc" of-type="Whole.None" usage="input" required="false" pfx-default-value="0" />
-    <property name="warrantyLimit" display-name-key="WarrantyLimit_Display" description-key="WarrantyLimit_Desc" of-type="Whole.None" usage="input" required="false" pfx-default-value="0" />
-    <property name="temperatureC" display-name-key="Temperature_Display" description-key="Temperature_Desc" of-type="Decimal" usage="input" required="false" pfx-default-value="0" />
+    <property name="currentCycles" display-name-key="CurrentCycles_Display" description-key="CurrentCycles_Desc" of-type="Whole.None" usage="input" required="false" />
+    <property name="warrantyLimit" display-name-key="WarrantyLimit_Display" description-key="WarrantyLimit_Desc" of-type="Whole.None" usage="input" required="false" />
+    <property name="temperatureC" display-name-key="Temperature_Display" description-key="Temperature_Desc" of-type="Decimal" usage="input" required="false" />
     <property name="lastSensorReading" display-name-key="LastSensor_Display" description-key="LastSensor_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <property name="lastRefresh" display-name-key="LastRefresh_Display" description-key="LastRefresh_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <resources>
