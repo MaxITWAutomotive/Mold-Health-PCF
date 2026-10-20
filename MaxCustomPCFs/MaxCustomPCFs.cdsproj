@@ -48,13 +48,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\MoldHealth\MoldHealth.pcfproj">
-      <Project>{34b48b46-af22-4ac0-8ee3-59722699c658}</Project>
-      <Name>MoldHealth</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <OutputItemType>Content</OutputItemType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProjectReference>
     <ProjectReference Include="..\MoldMakerDataCard\MoldMakerDataCard.pcfproj">
       <Project>{a1c2e3f4-5b6a-7890-abcd-ef1234567890}</Project>
       <Name>MoldMakerDataCard</Name>
