@@ -80,4 +80,20 @@ jobs:
           name: MoldHealthSolution
           path: MoldHealthSolution/bin/Release/MoldHealthSolution.zip
 
+      - name: Import instructions (no local build / no service principal)
+        shell: pwsh
+        run: |
+          @"
+          ## MoldHealthSolution built successfully
+
+          **No admin PC / no Client ID:** use this zip in the browser (no .NET or pac on your machine).
+
+          1. Download artifact **MoldHealthSolution** from this workflow run (right panel → Artifacts).
+          2. Open [Power Apps](https://make.powerapps.com) → **Max Environment** → **Solutions** → **Import**.
+          3. Select **MoldHealthSolution.zip** → publisher **ITW** → finish → **Publish all customizations**.
+          4. In Studio: **Add (+)** → **Get more components** → **Code** → update controls if manifest version changed.
+
+          **VS Code only (optional):** Power Platform Tools extension + `pac auth create` (your user login, no app registration) + `pac pcf push --publisher-prefix itw` after `npm run build` in one PCF folder — no full solution build required on your PC.
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8
+
 
