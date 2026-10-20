@@ -3,7 +3,7 @@
   <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
   <resheader name="version"><value>2.0</value></resheader>
   <data name="PartDocumentationCard_Display" xml:space="preserve"><value>Part Documentation Card</value></data>
-  <data name="PartDocumentationCard_Desc" xml:space="preserve"><value>Drawing fields, SharePoint attachment list, and PDF preview.</value></data>
+  <data name="PartDocumentationCard_Desc" xml:space="preserve"><value>Drawing fields and attachment file list; outputs SelectedFileUrl for a canvas PDF Viewer.</value></data>
   <data name="PartTitle_Display" xml:space="preserve"><value>Part Title</value></data>
   <data name="PartTitle_Desc" xml:space="preserve"><value>Header title for the part.</value></data>
   <data name="DrawingNumber_Display" xml:space="preserve"><value>Drawing Number</value></data>
@@ -14,4 +14,8 @@
   <data name="FileName_Display" xml:space="preserve"><value>File Name</value></data>
   <data name="FileUrl_Display" xml:space="preserve"><value>File URL</value></data>
   <data name="FileExtension_Display" xml:space="preserve"><value>File Extension</value></data>
+  <data name="SelectedFileUrl_Display" xml:space="preserve"><value>Selected File Url</value></data>
+  <data name="SelectedFileUrl_Desc" xml:space="preserve"><value>URL of the selected attachment; bind to a PDF Viewer Document property.</value></data>
+  <data name="SelectedFileName_Display" xml:space="preserve"><value>Selected File Name</value></data>
+  <data name="SelectedFileName_Desc" xml:space="preserve"><value>Display name of the selected attachment.</value></data>
 </root>

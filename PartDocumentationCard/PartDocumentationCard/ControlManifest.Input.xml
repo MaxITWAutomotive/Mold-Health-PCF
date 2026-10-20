@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="ITW.Controls" constructor="PartDocumentationCard" version="1.0.0" display-name-key="PartDocumentationCard_Display" description-key="PartDocumentationCard_Desc" control-type="standard">
-    <external-service-usage enabled="true">
-      <domain>sharepoint.com</domain>
-      <domain>sharepointonline.com</domain>
+  <control namespace="ITW.Controls" constructor="PartDocumentationCard" version="1.0.1" display-name-key="PartDocumentationCard_Display" description-key="PartDocumentationCard_Desc" control-type="standard">
+    <external-service-usage enabled="false">
     </external-service-usage>
     <property name="partTitle" display-name-key="PartTitle_Display" description-key="PartTitle_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <property name="drawingNumber" display-name-key="DrawingNumber_Display" description-key="DrawingNumber_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
     <property name="revision" display-name-key="Revision_Display" description-key="Revision_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
+    <property name="selectedFileUrl" display-name-key="SelectedFileUrl_Display" description-key="SelectedFileUrl_Desc" of-type="SingleLine.Text" usage="output" required="false" />
+    <property name="selectedFileName" display-name-key="SelectedFileName_Display" description-key="SelectedFileName_Desc" of-type="SingleLine.Text" usage="output" required="false" />
     <data-set name="attachmentFiles" display-name-key="AttachmentFiles_Display">
       <property-set name="fileName" display-name-key="FileName_Display" of-type="SingleLine.Text" usage="bound" required="true" />
       <property-set name="fileUrl" display-name-key="FileUrl_Display" of-type="SingleLine.Text" usage="bound" required="true" />

@@ -1,7 +1,7 @@
 {
   "name": "part-documentation-card-pcf",
   "version": "1.0.0",
-  "description": "Part documentation card with drawing fields, SharePoint file list, and PDF preview.",
+  "description": "Part documentation card with drawing fields, file list, and SelectedFileUrl output for PDF Viewer.",
   "scripts": {
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",

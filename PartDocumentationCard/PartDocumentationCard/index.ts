@@ -78,6 +78,8 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
   private _host!: HTMLDivElement;
   private _context!: ComponentFramework.Context<IInputs>;
   private _selectedFileId: string | null = null;
+  private _selectedFileUrl = "";
+  private _selectedFileName = "";
   private _notifyOutputChanged!: () => void;
 
   public init(
@@ -104,7 +106,10 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
   }
 
   public getOutputs(): IOutputs {
-    return {};
+    return {
+      selectedFileUrl: this._selectedFileUrl,
+      selectedFileName: this._selectedFileName,
+    };
   }
 
   public destroy(): void {
@@ -119,21 +124,8 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
     if (fileBtn?.dataset.fileId) {
       this._selectedFileId = fileBtn.dataset.fileId;
       this.render(this._context);
-      return;
-    }
-    const openBtn = target.closest("[data-open-url]") as HTMLElement | null;
-    if (openBtn?.dataset.openUrl) {
-      this.openUrl(openBtn.dataset.openUrl);
     }
   };
-
-  private openUrl(url: string): void {
-    try {
-      this._context.navigation.openUrl(url);
-    } catch {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-  }
 
   private applyContainerLayout(context: ComponentFramework.Context<IInputs>): void {
     const width = context.mode.allocatedWidth;
@@ -142,7 +134,19 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
     this._container.style.width = width > 0 ? `${width}px` : "100%";
     this._container.style.height = height > 0 ? `${height}px` : "auto";
     this._host.style.width = "100%";
-    this._host.style.height = height > 0 ? "100%" : "auto";
+    this._host.style.height = height > 0 ? `${height}px` : "auto";
+  }
+
+  private syncSelectedOutputs(files: FileRow[]): void {
+    const selected = files.find((f) => f.id === this._selectedFileId) ?? null;
+    const url = selected?.fileUrl ?? "";
+    const name = selected?.fileName ?? "";
+    if (url === this._selectedFileUrl && name === this._selectedFileName) {
+      return;
+    }
+    this._selectedFileUrl = url;
+    this._selectedFileName = name;
+    this._notifyOutputChanged();
   }
 
   private render(context: ComponentFramework.Context<IInputs>): void {
@@ -159,6 +163,8 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
       this._selectedFileId = null;
     }
 
+    this.syncSelectedOutputs(files);
+
     const selected = files.find((f) => f.id === this._selectedFileId) ?? null;
 
     const fileListHtml =
@@ -174,19 +180,13 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
             })
             .join("");
 
-    let previewHtml = `<div class="itw-pdc-preview-empty">Select a file to preview. PDF files open in the viewer when SharePoint allows embedding.</div>`;
-    if (selected?.fileUrl) {
-      if (selected.isPdf) {
-        previewHtml = `
-          <div class="itw-pdc-preview-title">Preview: ${escapeHtml(selected.fileName)}</div>
-          <iframe class="itw-pdc-preview-frame" src="${escapeHtml(selected.fileUrl)}" title="${escapeHtml(selected.fileName)}"></iframe>
-          <button type="button" class="itw-pdc-open-link" data-open-url="${escapeHtml(selected.fileUrl)}">Open PDF in new tab if preview is blank</button>`;
-      } else {
-        previewHtml = `
-          <div class="itw-pdc-preview-empty">${escapeHtml(selected.fileName)} — preview not available for this file type.</div>
-          <button type="button" class="itw-pdc-open-link" data-open-url="${escapeHtml(selected.fileUrl)}">Open file</button>`;
-      }
-    }
+    const selectionHtml = selected
+      ? `<div class="itw-pdc-selection">
+  <span class="itw-pdc-selection-label">Selected for preview</span>
+  <span class="itw-pdc-selection-name">${escapeHtml(selected.fileName)}</span>
+  <span class="itw-pdc-selection-hint">Add a PDF Viewer control and set Document to this component&apos;s <strong>SelectedFileUrl</strong> output.</span>
+</div>`
+      : `<div class="itw-pdc-selection itw-pdc-selection--empty">Select a file to drive the canvas PDF Viewer.</div>`;
 
     this._host.innerHTML = `
 <div class="itw-pdc-card">
@@ -204,7 +204,7 @@ export class PartDocumentationCard implements ComponentFramework.StandardControl
     </div>
     <div class="itw-pdc-files" role="list">${fileListHtml}</div>
   </div>
-  <div class="itw-pdc-preview">${previewHtml}</div>
+  <div class="itw-pdc-footer">${selectionHtml}</div>
 </div>`;
   }
 }

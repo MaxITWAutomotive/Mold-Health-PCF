@@ -10,4 +10,6 @@ export interface IInputs {
     attachmentFiles: ComponentFramework.PropertyTypes.DataSet;
 }
 export interface IOutputs {
+    selectedFileUrl?: string;
+    selectedFileName?: string;
 }
