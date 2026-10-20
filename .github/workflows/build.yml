@@ -24,6 +24,12 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Install Power Platform CLI (pac) on runner
+        run: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
+      - name: Verify pac (all tooling runs on GitHub — nothing on your PC)
+        run: pac --version
+
       - name: Install dependencies (MoldHealth)
         working-directory: ./MoldHealth
         run: npm ci
