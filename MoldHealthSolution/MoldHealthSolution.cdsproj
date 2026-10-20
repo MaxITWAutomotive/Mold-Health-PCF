@@ -49,7 +49,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\MoldHealth\MoldHealth.pcfproj" />
+    <ProjectReference Include="..\MoldHealth\MoldHealth.pcfproj">
+      <Project>{34b48b46-af22-4ac0-8ee3-59722699c658}</Project>
+      <Name>MoldHealth</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

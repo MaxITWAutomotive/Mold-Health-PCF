@@ -35,12 +35,27 @@ jobs:
 
       - name: Build Solution
         working-directory: ./MoldHealthSolution
-        run: dotnet build
+        run: dotnet build -c Release
+
+      - name: Verify solution zip includes PCF assets
+        shell: pwsh
+        run: |
+          $zip = "MoldHealthSolution/bin/Release/MoldHealthSolution.zip"
+          if (-not (Test-Path $zip)) { throw "Missing solution zip: $zip" }
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $entries = [System.IO.Compression.ZipFile]::OpenRead($zip).Entries.FullName
+          $entries | ForEach-Object { Write-Host $_ }
+          if ($entries -notmatch 'Controls/.+/ControlManifest\.xml') {
+            throw "Solution zip does not contain PCF Controls folder. Import would succeed but the code component would not appear in canvas apps."
+          }
+          if ($entries -notmatch 'Controls/.+/bundle\.js') {
+            throw "Solution zip is missing bundle.js for the PCF control."
+          }
 
       - name: Upload Solution
         uses: actions/upload-artifact@v4
         with:
           name: MoldHealthSolution
-          path: MoldHealthSolution/bin/Debug/MoldHealthSolution.zip
+          path: MoldHealthSolution/bin/Release/MoldHealthSolution.zip
 
 

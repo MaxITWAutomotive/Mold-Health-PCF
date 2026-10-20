@@ -9,7 +9,11 @@
   <EntityRelationships />
   <OrganizationSettings />
   <optionsets />
-  <CustomControls />
+  <CustomControls>
+    <CustomControl Name="itw_ITW.Controls.MoldHealth">
+      <FileName>/Controls/itw_ITW.Controls.MoldHealth/ControlManifest.xml</FileName>
+    </CustomControl>
+  </CustomControls>
   <SolutionPluginAssemblies />
   <EntityDataProviders />
   <Languages>
