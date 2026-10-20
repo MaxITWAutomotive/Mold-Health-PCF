@@ -55,6 +55,13 @@
       <OutputItemType>Content</OutputItemType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="..\PartDocumentationCard\PartDocumentationCard.pcfproj">
+      <Project>{b2c3d4e5-f6a7-8901-bcde-f23456789012}</Project>
+      <Name>PartDocumentationCard</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <OutputItemType>Content</OutputItemType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProjectReference>
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

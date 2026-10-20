@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="ITW.Controls" constructor="PartDocumentationCard" version="1.0.0" display-name-key="PartDocumentationCard_Display" description-key="PartDocumentationCard_Desc" control-type="standard">
+    <external-service-usage enabled="true">
+      <domain>sharepoint.com</domain>
+      <domain>sharepointonline.com</domain>
+    </external-service-usage>
+    <property name="partTitle" display-name-key="PartTitle_Display" description-key="PartTitle_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
+    <property name="drawingNumber" display-name-key="DrawingNumber_Display" description-key="DrawingNumber_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
+    <property name="revision" display-name-key="Revision_Display" description-key="Revision_Desc" of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="''" />
+    <data-set name="attachmentFiles" display-name-key="AttachmentFiles_Display">
+      <property-set name="fileName" display-name-key="FileName_Display" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="fileUrl" display-name-key="FileUrl_Display" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property-set name="fileExtension" display-name-key="FileExtension_Display" of-type="SingleLine.Text" usage="bound" required="false" />
+    </data-set>
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/PartDocumentationCard.css" order="1" />
+      <resx path="strings/PartDocumentationCard.1033.resx" version="1.0.0" />
+    </resources>
+  </control>
+</manifest>
