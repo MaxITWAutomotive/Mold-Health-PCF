@@ -1,0 +1,96 @@
+name: Build PCF
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install Power Platform CLI (pac)
+        run: dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
+      - name: Verify pac
+        run: pac --version
+
+      - name: Install dependencies (MoldMakerDataCard)
+        working-directory: ./MoldMakerDataCard
+        run: npm ci
+
+      - name: Lint PCF (MoldMakerDataCard)
+        working-directory: ./MoldMakerDataCard
+        run: npm run lint
+
+      - name: Build PCF (MoldMakerDataCard)
+        working-directory: ./MoldMakerDataCard
+        run: npm run build
+
+      - name: Install dependencies (PartDocumentationCard)
+        working-directory: ./PartDocumentationCard
+        run: npm ci
+
+      - name: Lint PCF (PartDocumentationCard)
+        working-directory: ./PartDocumentationCard
+        run: npm run lint
+
+      - name: Build PCF (PartDocumentationCard)
+        working-directory: ./PartDocumentationCard
+        run: npm run build
+
+      - name: Restore Solution
+        working-directory: ./MaxCustomPCFs
+        run: dotnet restore
+
+      - name: Build Solution
+        working-directory: ./MaxCustomPCFs
+        run: dotnet build -c Release
+
+      - name: Verify solution zip includes PCF assets
+        shell: pwsh
+        run: |
+          $zip = "MaxCustomPCFs/bin/Release/MaxCustomPCFs.zip"
+          if (-not (Test-Path $zip)) { throw "Missing solution zip: $zip" }
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $entries = @([System.IO.Compression.ZipFile]::OpenRead($zip).Entries.FullName)
+          $entries | ForEach-Object { Write-Host $_ }
+          if (-not ($entries | Where-Object { $_ -match 'Controls/.+/ControlManifest\.xml' })) {
+            throw "Solution zip does not contain PCF Controls folder."
+          }
+          if (-not ($entries | Where-Object { $_ -match 'Controls/itw_ITW\.Controls\.MoldMakerDataCard/ControlManifest\.xml' })) {
+            throw "Solution zip is missing MoldMakerDataCard."
+          }
+          if (-not ($entries | Where-Object { $_ -match 'Controls/itw_ITW\.Controls\.PartDocumentationCard/ControlManifest\.xml' })) {
+            throw "Solution zip is missing PartDocumentationCard."
+          }
+
+      - name: Upload Solution
+        uses: actions/upload-artifact@v4
+        with:
+          name: MaxCustomPCFs
+          path: MaxCustomPCFs/bin/Release/MaxCustomPCFs.zip
+
+      - name: Job summary
+        shell: pwsh
+        run: |
+          @"
+          ## Max Custom PCFs — build succeeded
+
+          Download artifact **MaxCustomPCFs** from this run, then import **MaxCustomPCFs.zip** in [Power Apps](https://make.powerapps.com) → **Solutions** → **Import** → **Publish all customizations**.
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8
