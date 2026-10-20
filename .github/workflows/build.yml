@@ -54,15 +54,15 @@ jobs:
           $zip = "MoldHealthSolution/bin/Release/MoldHealthSolution.zip"
           if (-not (Test-Path $zip)) { throw "Missing solution zip: $zip" }
           Add-Type -AssemblyName System.IO.Compression.FileSystem
-          $entries = [System.IO.Compression.ZipFile]::OpenRead($zip).Entries.FullName
+          $entries = @([System.IO.Compression.ZipFile]::OpenRead($zip).Entries.FullName)
           $entries | ForEach-Object { Write-Host $_ }
-          if ($entries -notmatch 'Controls/.+/ControlManifest\.xml') {
+          if (-not ($entries | Where-Object { $_ -match 'Controls/.+/ControlManifest\.xml' })) {
             throw "Solution zip does not contain PCF Controls folder. Import would succeed but the code component would not appear in canvas apps."
           }
-          if ($entries -notmatch 'Controls/.+/bundle\.js') {
+          if (-not ($entries | Where-Object { $_ -match 'Controls/.+/bundle\.js' })) {
             throw "Solution zip is missing bundle.js for the PCF control."
           }
-          if ($entries -notmatch 'Controls/itw_ITW\.Controls\.MoldMakerDataCard/ControlManifest\.xml') {
+          if (-not ($entries | Where-Object { $_ -match 'Controls/itw_ITW\.Controls\.MoldMakerDataCard/ControlManifest\.xml' })) {
             throw "Solution zip is missing MoldMakerDataCard code component."
           }
 
