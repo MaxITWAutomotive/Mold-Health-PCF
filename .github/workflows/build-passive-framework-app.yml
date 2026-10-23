@@ -1,0 +1,92 @@
+name: Build Passive Framework App
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - PassiveFrameworkApp/**
+      - .github/workflows/build-passive-framework-app.yml
+
+jobs:
+  pack-canvas-app:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Power Platform CLI
+        uses: microsoft/powerplatform-actions/actions-install@v1
+        with:
+          add-tools-to-path: true
+
+      - name: Verify canvas source (.msapr + Src)
+        shell: pwsh
+        run: |
+          $appRoot = Join-Path $PWD "PassiveFrameworkApp"
+          if (-not (Test-Path (Join-Path $appRoot "Src"))) {
+            throw "Missing PassiveFrameworkApp/Src."
+          }
+          $msapr = Get-ChildItem -Path $appRoot -Filter *.msapr -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $msapr) {
+            throw @"
+          Missing PassiveFrameworkApp/*.msapr — required for pac canvas pack (SourceCode layout).
+          Add your local .msapr next to PassiveFrameworkApp/Src/ and push to main.
+          "@
+          }
+          Write-Host "Using msapr: $($msapr.FullName)"
+
+      - name: Pack canvas app (.msapp)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path out | Out-Null
+          $msapp = Join-Path $PWD "out/ITW Passive Master List.msapp"
+          pac canvas pack `
+            --sources PassiveFrameworkApp `
+            --msapp $msapp `
+            --layout SourceCode `
+            --overwrite
+          if (-not (Test-Path $msapp)) {
+            throw "pac canvas pack did not produce: $msapp"
+          }
+          $size = (Get-Item $msapp).Length
+          Write-Host "Packed .msapp size: $size bytes"
+          if ($size -lt 4096) {
+            throw "Output .msapp is unexpectedly small ($size bytes)."
+          }
+
+      - name: Verify .msapp archive
+        shell: pwsh
+        run: |
+          $msapp = Join-Path $PWD "out/ITW Passive Master List.msapp"
+          Add-Type -AssemblyName System.IO.Compression.FileSystem
+          $zip = [System.IO.Compression.ZipFile]::OpenRead($msapp)
+          try {
+            $entries = @($zip.Entries.FullName)
+          } finally {
+            $zip.Dispose()
+          }
+          $entries | Select-Object -First 40 | ForEach-Object { Write-Host $_ }
+          if (-not ($entries | Where-Object { $_ -match '(?i)Header\.json' })) {
+            throw ".msapp is missing Header.json — pack may have failed."
+          }
+
+      - name: Upload .msapp artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITW-Passive-Master-List-msapp
+          path: out/ITW Passive Master List.msapp
+
+      - name: Import instructions
+        shell: pwsh
+        run: |
+          @"
+          ## Passive Framework App packed successfully
+
+          1. Download artifact **ITW-Passive-Master-List-msapp** from this workflow run.
+          2. Open [Power Apps Studio](https://make.powerapps.com) → **Apps** → **Import canvas app** (or **File → Open → Browse** in Studio).
+          3. Select **ITW Passive Master List.msapp**.
+          4. Ensure **MaxCustomPCFs** solution (MoldMakerDataCard / PartDocumentationCard) is imported in the same environment before playing screens that use those code components.
+          "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8
