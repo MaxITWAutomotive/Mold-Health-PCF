@@ -25,27 +25,27 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Install dependencies (MoldMakerDataCard)
-        working-directory: ./MoldMakerDataCard
+        working-directory: ./MaxCustomPCFs/MoldMakerDataCard
         run: npm ci
 
       - name: Lint PCF (MoldMakerDataCard)
-        working-directory: ./MoldMakerDataCard
+        working-directory: ./MaxCustomPCFs/MoldMakerDataCard
         run: npm run lint
 
       - name: Build PCF (MoldMakerDataCard)
-        working-directory: ./MoldMakerDataCard
+        working-directory: ./MaxCustomPCFs/MoldMakerDataCard
         run: npm run build
 
       - name: Install dependencies (PartDocumentationCard)
-        working-directory: ./PartDocumentationCard
+        working-directory: ./MaxCustomPCFs/PartDocumentationCard
         run: npm ci
 
       - name: Lint PCF (PartDocumentationCard)
-        working-directory: ./PartDocumentationCard
+        working-directory: ./MaxCustomPCFs/PartDocumentationCard
         run: npm run lint
 
       - name: Build PCF (PartDocumentationCard)
-        working-directory: ./PartDocumentationCard
+        working-directory: ./MaxCustomPCFs/PartDocumentationCard
         run: npm run build
 
       - name: Restore Solution
@@ -96,6 +96,6 @@ jobs:
           3. Select **MaxCustomPCFs.zip** → publisher **ITW** → finish → **Publish all customizations**.
           4. In Studio: **Add (+)** → **Get more components** → **Code** → **MoldMakerDataCard** and **PartDocumentationCard**.
 
-          **VS Code only (optional):** Power Platform Tools extension + `pac auth create` (your user login, no app registration) + `pac pcf push --publisher-prefix itw` after `npm run build` in one PCF folder — no full solution build required on your PC.
+          **VS Code only (optional):** Power Platform Tools extension + `pac auth create` (your user login, no app registration) + `pac pcf push --publisher-prefix itw` after `npm run build` in a PCF folder under `MaxCustomPCFs/` — no full solution build required on your PC.
           "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8
 

@@ -48,14 +48,14 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\MoldMakerDataCard\MoldMakerDataCard.pcfproj">
+    <ProjectReference Include="MoldMakerDataCard\MoldMakerDataCard.pcfproj">
       <Project>{a1c2e3f4-5b6a-7890-abcd-ef1234567890}</Project>
       <Name>MoldMakerDataCard</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <OutputItemType>Content</OutputItemType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="..\PartDocumentationCard\PartDocumentationCard.pcfproj">
+    <ProjectReference Include="PartDocumentationCard\PartDocumentationCard.pcfproj">
       <Project>{b2c3d4e5-f6a7-8901-bcde-f23456789012}</Project>
       <Name>PartDocumentationCard</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
