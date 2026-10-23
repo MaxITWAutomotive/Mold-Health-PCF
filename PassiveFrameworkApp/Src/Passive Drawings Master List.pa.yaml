@@ -1,0 +1,1311 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  Passive Drawings Master List:
+    Children:
+      - ScreenContainer3:
+          Control: GroupContainer@1.5.0
+          Variant: AutoLayout
+          Properties:
+            Fill: =RGBA(245, 245, 245, 1)
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            LayoutGap: =10
+            PaddingBottom: =12
+            PaddingLeft: =12
+            PaddingRight: =12
+            PaddingTop: =12
+            Width: =Parent.Width
+          Children:
+            - Header_5:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =65
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =10
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  PaddingRight: =10
+                  RadiusBottomLeft: =0
+                  RadiusBottomRight: =0
+                  RadiusTopLeft: =0
+                  RadiusTopRight: =0
+                Children:
+                  - HeaderContainer_5:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =Color.White
+                        Height: =68
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutJustifyContent: =LayoutJustifyContent.Center
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutMinHeight: =10
+                        LayoutWrap: =true
+                        X: =40
+                        Y: =40
+                      Children:
+                        - Header1_2:
+                            Control: Header@0.0.44
+                            Properties:
+                              Align: =Align.Center
+                              BasePaletteColor: =RGBA(249, 83, 109, 1)
+                              BorderThickness: =0
+                              FillPortions: =1
+                              Font: =Font.'Open Sans'
+                              FontColor: =RGBA(184, 0, 0, 1)
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              LayoutMinHeight: =60
+                              Logo: ='itw-logo-illinois_tool_works_logo'
+                              LogoTooltip: ="ITW"
+                              OnSelectLogo: |
+                                =
+                              PaddingRight: =0
+                              Style: ='Header.Style'.Neutral
+                              TitleFontSize: =If(App.Width < 600, 12, 28)
+                              UserImage: |
+                                =
+
+
+                                // Image property for a profile image
+                                IfError(
+                                    User().Image,
+                                    // Fallback to initials circle or a stock image
+                                    SampleImage
+                                )
+                              X: =40
+                              Y: =40
+                  - HomeButton_1:
+                      Control: ModernButton@1.0.0
+                      Properties:
+                        Align: =Align.Justify
+                        AlignInContainer: =AlignInContainer.Center
+                        BasePaletteColor: =RGBA(132, 10, 45, 1)
+                        FontWeight: =FontWeight.Bold
+                        Icon: ="Home"
+                        IconStyle: =IconStyle.Filled
+                        Layout: =ButtonLayout.IconOnly
+                        OnSelect: =Navigate('Passive Project Management Framework')
+                        PaddingBottom: =5
+                        PaddingLeft: =12
+                        PaddingRight: =12
+                        PaddingTop: =5
+                        RadiusBottomLeft: =4
+                        RadiusBottomRight: =4
+                        RadiusTopLeft: =4
+                        RadiusTopRight: =4
+                        Size: =20
+                        VerticalAlign: =VerticalAlign.Middle
+                        Width: =50
+                        X: =40
+                        Y: =40
+            - Container11:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =60
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                Children:
+                  - TabList3:
+                      Control: ModernTabList@1.0.2
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =1
+                        FontWeight: =""
+                        Height: =55
+                        Items: =["Browse by Drawing", "Browse by Mold"]
+                        LayoutMinHeight: =55
+                        LayoutMinWidth: =280
+                        Size: =0
+                        Width: =280
+                        X: =40
+                        Y: =40
+            - DrawingContainer:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Visible: =TabList3.Selected.Value ="Browse by Drawing"
+                Children:
+                  - MainContainer:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =RGBA(245, 245, 245, 1)
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =16
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutWrap: =true
+                        PaddingBottom: =2
+                        PaddingLeft: =2
+                        PaddingRight: =2
+                        PaddingTop: =2
+                        X: =40
+                        Y: =40
+                      Children:
+                        - SidebarContainer_1:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              Fill: =RGBA(255, 255, 255, 1)
+                              FillPortions: |+
+                                =0
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =5
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              LayoutMinWidth: =600
+                              PaddingBottom: =5
+                              PaddingLeft: =5
+                              PaddingRight: =5
+                              PaddingTop: =5
+                              X: =40
+                              Y: =40
+                            Children:
+                              - SearchContainer2_1:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =RGBA(245, 245, 245, 1)
+                                    FillPortions: =0
+                                    Height: =32
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    PaddingLeft: =10
+                                    PaddingRight: =10
+                                    Visible: |
+                                      =true
+                                    Width: =150
+                                  Children:
+                                    - SearchInput2_1:
+                                        Control: ModernTextInput@1.1.2
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Start
+                                          BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                          FillPortions: =1
+                                          FontWeight: =""
+                                          Italic: =true
+                                          LayoutMinWidth: =50
+                                          MaxLength: =-1
+                                          PaddingRight: =10
+                                          Placeholder: ="Search Drawing Number"
+                                          Size: =0
+                                          Visible: =Parent.Visible
+                              - MainTable_1:
+                                  Control: Table@1.0.278
+                                  Properties:
+                                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                    EnableRangeSelection: ='PowerAppsOneGrid.EnableRangeSelection'.Enable
+                                    EnableSorting: ='PowerAppsOneGrid.EnableSorting'.Enable
+                                    FillPortions: =1
+                                    FontColor: =RGBA(0, 0, 0, 1)
+                                    HeaderFontColor: =RGBA(184, 0, 0, 1)
+                                    Items: |+
+                                      =SortByColumns(
+                                          Filter('Drawings', StartsWith(Title, SearchInput2_1.Text)),
+                                          "Title",
+                                          SortOrder.Ascending
+                                      )
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    OnSelect: |-
+                                      =UpdateContext({ isItemSelected: true, newMode: false, CurrentItem:MainTable_1.Selected })
+                                    ReflowBehavior: ='PowerAppsOneGrid.ReflowBehavior'.GridOnly
+                                    ShowAvatar: ="no"
+                                    ShowFooter: ="no"
+                                    Visible: |
+                                      =true
+                                  Children:
+                                    - Title1:
+                                        Control: TableDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          CanGrow: =false
+                                          FieldDisplayName: ="Title"
+                                          FieldName: ="Title"
+                                          FieldType: ="s"
+                                          HeaderText: ="Drawing"
+                                          Order: =1
+                                          Width: =100
+                                    - Revision1:
+                                        Control: TableDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          CanGrow: =false
+                                          FieldDisplayName: ="Revision"
+                                          FieldName: ="Revision"
+                                          FieldType: ="s"
+                                          Order: =2
+                                          Width: =100
+                                    - Part Description1:
+                                        Control: TableDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: ="Part Description"
+                                          FieldName: ="PartDescription"
+                                          FieldType: ="s"
+                                          Order: =6
+                        - MainContainer3:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              Fill: =RGBA(255, 255, 255, 1)
+                              FillPortions: =7
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                            Children:
+                              - Form2:
+                                  Control: Form@2.4.4
+                                  Layout: Vertical
+                                  Properties:
+                                    DataSource: =Drawings
+                                    DefaultMode: =FormMode.View
+                                    Height: =600
+                                    Item: |+
+                                      =LookUp('Drawings', ID = MainTable_1.Selected.ID)
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    LayoutMinHeight: =300
+                                    Visible: |+
+                                      =!IsBlank(MainTable_1.Selected)
+                                    X: =40
+                                    Y: =40
+                                  Children:
+                                    - Part Description_DataCard1:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        Properties:
+                                          DataField: ="PartDescription"
+                                          Default: =ThisItem.'Part Description'
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,'Part Description')
+                                          Height: =56
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, 'Part Description')
+                                          Required: =false
+                                          Update: =DataCardValue14.Text
+                                          Width: =726
+                                          X: =0
+                                          Y: =0
+                                        Children:
+                                          - DataCardKey14:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: |+
+                                                  =
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue14:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Appearance: =Appearance.FilledLighter
+                                                Color: =RGBA(184, 0, 0, 1)
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =FontWeight.Bold
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =20
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                Y: =9
+                                          - ErrorMessage12:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue14.Y + DataCardValue14.Height
+                                          - StarVisible12:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey14.Y
+                                    - Title_DataCard2:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        Properties:
+                                          DataField: ="Title"
+                                          Default: =ThisItem.Title
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Title)
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, Title)
+                                          Required: =false
+                                          Update: =DataCardValue12.Text
+                                          Width: =242
+                                          X: =0
+                                          Y: =1
+                                        Children:
+                                          - DataCardKey12:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: |-
+                                                  ="Drawing Number
+                                                  "
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue12:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =""
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =0
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardKey12.Y + DataCardKey12.Height + 4
+                                          - ErrorMessage10:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue12.Y + DataCardValue12.Height
+                                          - StarVisible10:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey12.Y
+                                    - Revision_DataCard2:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        Properties:
+                                          DataField: ="Revision"
+                                          Default: =ThisItem.Revision
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Revision)
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, Revision)
+                                          Required: =false
+                                          Update: =DataCardValue13.Text
+                                          Width: =242
+                                          X: =1
+                                          Y: =1
+                                        Children:
+                                          - DataCardKey13:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.DisplayName
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue13:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =""
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =0
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardKey13.Y + DataCardKey13.Height + 4
+                                          - ErrorMessage11:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue13.Y + DataCardValue13.Height
+                                          - StarVisible11:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey13.Y
+                                    - Attachments_DataCard4:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: ClassicAttachmentsEdit
+                                        IsLocked: true
+                                        Properties:
+                                          DataField: ="{Attachments}"
+                                          Default: =ThisItem.Attachments
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Attachments)
+                                          Height: =143
+                                          Required: =false
+                                          Update: =DataCardValue16.Attachments
+                                          Width: =726
+                                          X: =0
+                                          Y: =2
+                                        Children:
+                                          - DataCardKey16:
+                                              Control: Label@2.5.1
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                AutoHeight: =true
+                                                BorderColor: =RGBA(0, 0, 0, 1)
+                                                Color: =App.Theme.Colors.Darker30
+                                                Height: =34
+                                                Text: =Parent.DisplayName
+                                                Width: =Parent.Width - 60
+                                                Wrap: =false
+                                                X: =30
+                                                Y: =10
+                                          - DataCardValue16:
+                                              Control: Attachments@2.3.0
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                                DisplayMode: =Parent.DisplayMode
+                                                Height: =326
+                                                Items: =Parent.Default
+                                                PaddingBottom: =5
+                                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                                PaddingRight: =5
+                                                PaddingTop: =5
+                                                Tooltip: =Parent.DisplayName
+                                                Width: =Parent.Width - 60
+                                                X: =30
+                                                Y: =DataCardKey16.Y + DataCardKey16.Height + 5
+                                          - ErrorMessage14:
+                                              Control: Label@2.5.1
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                AutoHeight: =true
+                                                BorderColor: =RGBA(0, 0, 0, 1)
+                                                Color: =RGBA(168, 0, 0, 1)
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =10
+                                                Live: =Live.Assertive
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                                Width: =Parent.Width - 60
+                                                X: =30
+                                                Y: =DataCardValue16.Y + DataCardValue16.Height
+                                          - StarVisible14:
+                                              Control: Label@2.5.1
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                BorderColor: =RGBA(0, 0, 0, 1)
+                                                Color: =App.Theme.Colors.Darker30
+                                                Height: =DataCardKey16.Height
+                                                Text: ="*"
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Wrap: =false
+                                                Y: =DataCardKey16.Y
+                              - Container8:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    DropShadow: =DropShadow.None
+                                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                                    LayoutDirection: =LayoutDirection.Vertical
+                                    LayoutGap: =10
+                                    LayoutJustifyContent: =LayoutJustifyContent.Center
+                                    LayoutMaxHeight: =250
+                                    LayoutMaxWidth: =
+                                  Children:
+                                    - TextCanvas4_2:
+                                        Control: ModernText@1.0.0
+                                        Properties:
+                                          Align: =Align.Center
+                                          BorderStyle: =BorderStyle.None
+                                          BorderThickness: =1
+                                          Color: =RGBA(184, 0, 0, 1)
+                                          Font: =Font.Lato
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =25
+                                          LayoutMinHeight: =10
+                                          LayoutMinWidth: =35
+                                          PaddingBottom: =0
+                                          PaddingLeft: =10
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          RadiusBottomLeft: =5
+                                          RadiusBottomRight: =5
+                                          RadiusTopLeft: =5
+                                          RadiusTopRight: =5
+                                          Size: =18
+                                          Text: ="Select a drawing from the list"
+                                          VerticalAlign: =VerticalAlign.Bottom
+                                          Visible: |+
+                                            =
+                                            IsBlank(MainTable_1.Selected)
+                                          Width: =300
+                                          X: =40
+                                          Y: =40
+                                    - TextCanvas4_1:
+                                        Control: ModernText@1.0.0
+                                        Properties:
+                                          BorderStyle: =BorderStyle.None
+                                          BorderThickness: =1
+                                          Color: =RGBA(184, 0, 0, 1)
+                                          Font: =Font.Lato
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =25
+                                          LayoutMinHeight: =10
+                                          LayoutMinWidth: =35
+                                          PaddingBottom: =0
+                                          PaddingLeft: =25
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          RadiusBottomLeft: =5
+                                          RadiusBottomRight: =5
+                                          RadiusTopLeft: =5
+                                          RadiusTopRight: =5
+                                          Size: =18
+                                          Text: ="Molds using this drawing"
+                                          Visible: |+
+                                            =!IsBlank(MainTable_1.Selected)
+                                          X: =40
+                                          Y: =40
+                                    - Table2:
+                                        Control: ModernDataGrid@1.6.0
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Start
+                                          FillPortions: =0
+                                          Height: =If(Self.Y + 500 > Parent.Height, Parent.Height - Self.Y, 500)
+                                          Items: |-
+                                            =If(
+                                                !IsBlank(MainTable_1.Selected),
+                                                Filter('ITW Masterlist', Drawing.Value = MainTable_1.Selected.Title)
+                                            )
+                                          LayoutMinHeight: =If(Self.Y + 500 > Parent.Height, Parent.Height - Self.Y, 500)
+                                          LayoutMinWidth: =If(Self.X + 800 > Parent.Width, Parent.Width - Self.X, 800)
+                                          OnChange: |+
+                                            =false
+                                          SelectMultiple: =false
+                                          ShowSelector: =false
+                                          Visible: |+
+                                            =!IsBlank(MainTable_1.Selected)
+                                          Width: =If(Self.X + 800 > Parent.Width, Parent.Width - Self.X, 800)
+                                          X: =40
+                                          Y: =40
+                                        Children:
+                                          - Mold11:
+                                              Control: ModernDataGridColumn@1.2.0
+                                              Variant: Textual
+                                              IsLocked: true
+                                              Properties:
+                                                FieldDisplayName: ="Mold"
+                                                FieldName: ="Title"
+                                                FieldVariantName: ="textualColumn"
+                                                Text: =ThisItem.Mold
+            - MoldContainer:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  DropShadow: =DropShadow.None
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  Visible: =TabList3.Selected.Value ="Browse by Mold"
+                Children:
+                  - MainContainer_1:
+                      Control: GroupContainer@1.5.0
+                      Variant: AutoLayout
+                      Properties:
+                        DropShadow: =DropShadow.None
+                        Fill: =RGBA(245, 245, 245, 1)
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =16
+                        LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                        LayoutMaxHeight: =
+                        LayoutMaxWidth: =
+                        LayoutWrap: =true
+                        PaddingBottom: =2
+                        PaddingLeft: =2
+                        PaddingRight: =2
+                        PaddingTop: =2
+                        X: =40
+                        Y: =40
+                      Children:
+                        - SidebarContainer_2:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              Fill: =RGBA(255, 255, 255, 1)
+                              FillPortions: |+
+                                =0
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =5
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                              LayoutMinWidth: =600
+                              PaddingBottom: =5
+                              PaddingLeft: =5
+                              PaddingRight: =5
+                              PaddingTop: =5
+                              X: =40
+                              Y: =40
+                            Children:
+                              - SearchContainer2_2:
+                                  Control: GroupContainer@1.5.0
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =RGBA(245, 245, 245, 1)
+                                    FillPortions: =0
+                                    Height: =32
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    PaddingLeft: =10
+                                    PaddingRight: =10
+                                    Visible: |
+                                      =true
+                                    Width: =150
+                                  Children:
+                                    - SearchInput2_2:
+                                        Control: ModernTextInput@1.1.2
+                                        Properties:
+                                          AlignInContainer: =AlignInContainer.Start
+                                          BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                          FillPortions: =1
+                                          FontWeight: =""
+                                          Italic: =true
+                                          LayoutMinWidth: =50
+                                          MaxLength: =-1
+                                          PaddingRight: =10
+                                          Placeholder: ="Search Mold"
+                                          Size: =0
+                                          Visible: =Parent.Visible
+                              - MainTable_2:
+                                  Control: Table@1.0.278
+                                  Properties:
+                                    BasePaletteColor: =RGBA(249, 83, 109, 1)
+                                    EnableRangeSelection: ='PowerAppsOneGrid.EnableRangeSelection'.Enable
+                                    EnableSorting: ='PowerAppsOneGrid.EnableSorting'.Enable
+                                    FillPortions: =1
+                                    FontColor: =RGBA(0, 0, 0, 1)
+                                    HeaderFontColor: =RGBA(184, 0, 0, 1)
+                                    Items: |-
+                                      =If(
+                                          TabList3.Selected.Value = "Browse by Mold",
+                                          SortByColumns(
+                                              Filter('ITW Masterlist', StartsWith(Mold, SearchInput2_2.Text)),
+                                              "Title",
+                                              SortOrder.Ascending
+                                          )
+                                      )
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                    OnSelect: |-
+                                      =UpdateContext({ isItemSelected: true, newMode: false, CurrentItem:MainTable_2.Selected })
+                                    ReflowBehavior: ='PowerAppsOneGrid.ReflowBehavior'.GridOnly
+                                    ShowAvatar: ="no"
+                                    ShowFooter: ="no"
+                                    Visible: |
+                                      =true
+                                  Children:
+                                    - Title1_1:
+                                        Control: TableDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          CanGrow: =false
+                                          FieldDisplayName: ="Title"
+                                          FieldName: ="Title"
+                                          FieldType: ="s"
+                                          HeaderText: ="Mold"
+                                          Order: =1
+                                          Width: =100
+                                    - 'Drawing: Part Description2':
+                                        Control: TableDataField@1.5.0
+                                        Variant: textualColumn
+                                        IsLocked: true
+                                        Properties:
+                                          FieldDisplayName: |-
+                                            ="Drawing: Part Description"
+                                          FieldName: ="Drawing_x003a__x0020_Part_x0020_"
+                                          FieldType: ="E"
+                                          HeaderText: ="Part Description"
+                                          Order: =2
+                        - MainContainer3_1:
+                            Control: GroupContainer@1.5.0
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.SetByContainer
+                              Fill: =RGBA(255, 255, 255, 1)
+                              FillPortions: =7
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMaxHeight: =
+                              LayoutMaxWidth: =
+                            Children:
+                              - Form2_1:
+                                  Control: Form@2.4.4
+                                  Layout: Vertical
+                                  Properties:
+                                    DataSource: =Drawings
+                                    DefaultMode: =FormMode.View
+                                    Height: =600
+                                    Item: |-
+                                      =If(
+                                          TabList3.Selected.Value = "Browse by Mold" && !IsBlank(MainTable_2.Selected),
+                                          LookUp('Drawings', ID = MainTable_2.Selected.'Drawing: ID'.Id)
+                                      )
+                                    LayoutMaxHeight: =
+                                    LayoutMaxWidth: =
+                                  Children:
+                                    - Part Description_DataCard1_1:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        Properties:
+                                          DataField: ="PartDescription"
+                                          Default: =ThisItem.'Part Description'
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,'Part Description')
+                                          Height: =56
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, 'Part Description')
+                                          Required: =false
+                                          Update: =DataCardValue14_1.Text
+                                          Width: =918
+                                          X: =0
+                                          Y: =0
+                                        Children:
+                                          - DataCardKey14_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: |
+                                                  =
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue14_1:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Appearance: =Appearance.FilledLighter
+                                                Color: =RGBA(184, 0, 0, 1)
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =FontWeight.Bold
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =20
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =9
+                                          - ErrorMessage12_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue14_1.Y + DataCardValue14_1.Height
+                                          - StarVisible12_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey14_1.Y
+                                    - Title_DataCard2_1:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        Properties:
+                                          DataField: ="Title"
+                                          Default: =ThisItem.Title
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Title)
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, Title)
+                                          Required: =false
+                                          Update: =DataCardValue12_1.Text
+                                          Width: =306
+                                          X: =0
+                                          Y: =1
+                                        Children:
+                                          - DataCardKey12_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: |-
+                                                  ="Drawing Number
+                                                  "
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue12_1:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =""
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =0
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardKey12_1.Y + DataCardKey12_1.Height + 4
+                                          - ErrorMessage10_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue12_1.Y + DataCardValue12_1.Height
+                                          - StarVisible10_1:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey12_1.Y
+                                    - Revision_DataCard2_1:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: TextualEdit
+                                        IsLocked: true
+                                        Properties:
+                                          DataField: ="Revision"
+                                          Default: =ThisItem.Revision
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Revision)
+                                          MaxLength: =DataSourceInfo([@Drawings], DataSourceInfo.MaxLength, Revision)
+                                          Required: =false
+                                          Update: =DataCardValue13_1.Text
+                                          Width: =306
+                                          X: =1
+                                          Y: =1
+                                        Children:
+                                          - DataCardKey13_2:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                FontWeight: =FontWeight.Semibold
+                                                Height: =22
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.DisplayName
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Width: =Parent.Width - 48
+                                                Wrap: =false
+                                                X: =24
+                                                Y: =10
+                                          - DataCardValue13_1:
+                                              Control: ModernTextInput@1.1.2
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                AccessibleLabel: =Parent.DisplayName
+                                                Default: =Parent.Default
+                                                DisplayMode: =Parent.DisplayMode
+                                                FontWeight: =""
+                                                MaxLength: =-1
+                                                Placeholder: =""
+                                                Required: =Parent.Required
+                                                Size: =0
+                                                TriggerOutput: =TriggerOutput.FocusOut
+                                                ValidationState: =If(IsBlank(Parent.Error), "None", "Error")
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardKey13_2.Y + DataCardKey13_2.Height + 4
+                                          - ErrorMessage11_2:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(!IsBlank(Parent.Error), Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =Parent.Width - 48
+                                                X: =24
+                                                Y: =DataCardValue13_1.Y + DataCardValue13_1.Height
+                                          - StarVisible11_2:
+                                              Control: ModernText@1.0.0
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =30
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                RadiusBottomLeft: =0
+                                                RadiusBottomRight: =0
+                                                RadiusTopLeft: =0
+                                                RadiusTopRight: =0
+                                                Size: =14
+                                                Text: ="*"
+                                                VerticalAlign: =VerticalAlign.Top
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Y: =DataCardKey13_2.Y
+                                    - Attachments_DataCard4_1:
+                                        Control: TypedDataCard@1.0.7
+                                        Variant: ClassicAttachmentsEdit
+                                        IsLocked: true
+                                        Properties:
+                                          DataField: ="{Attachments}"
+                                          Default: =ThisItem.Attachments
+                                          DisplayName: =DataSourceInfo([@Drawings],DataSourceInfo.DisplayName,Attachments)
+                                          Height: =389
+                                          Required: =false
+                                          Update: =DataCardValue16_1.Attachments
+                                          Width: =714
+                                          X: =0
+                                          Y: =2
+                                        Children:
+                                          - DataCardKey16_1:
+                                              Control: Label@2.5.1
+                                              MetadataKey: FieldName
+                                              Properties:
+                                                AutoHeight: =true
+                                                Height: =34
+                                                Text: =Parent.DisplayName
+                                                Width: =Parent.Width - 60
+                                                Wrap: =false
+                                                X: =30
+                                                Y: =10
+                                          - DataCardValue16_1:
+                                              Control: Attachments@2.3.0
+                                              MetadataKey: FieldValue
+                                              Properties:
+                                                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                                                DisplayMode: =Parent.DisplayMode
+                                                Height: =500
+                                                Items: =Parent.Default
+                                                PaddingBottom: =5
+                                                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                                                PaddingRight: =5
+                                                PaddingTop: =5
+                                                Tooltip: =Parent.DisplayName
+                                                Width: =Parent.Width - 60
+                                                X: =30
+                                                Y: =DataCardKey16_1.Y + DataCardKey16_1.Height + 5
+                                          - ErrorMessage14_1:
+                                              Control: Label@2.5.1
+                                              MetadataKey: ErrorMessage
+                                              Properties:
+                                                AutoHeight: =true
+                                                Height: =10
+                                                Live: =Live.Assertive
+                                                PaddingBottom: =0
+                                                PaddingLeft: =0
+                                                PaddingRight: =0
+                                                PaddingTop: =0
+                                                Size: =14
+                                                Text: =Parent.Error
+                                                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                                                Width: =Parent.Width - 60
+                                                X: =30
+                                                Y: =DataCardValue16_1.Y + DataCardValue16_1.Height
+                                          - StarVisible14_1:
+                                              Control: Label@2.5.1
+                                              MetadataKey: FieldRequired
+                                              Properties:
+                                                Align: =Align.Center
+                                                Height: =DataCardKey16_1.Height
+                                                Text: ="*"
+                                                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                                                Width: =30
+                                                Wrap: =false
+                                                Y: =DataCardKey16_1.Y
+            - Footer_1:
+                Control: GroupContainer@1.5.0
+                Variant: AutoLayout
+                Properties:
+                  Fill: =RGBA(255, 255, 255, 1)
+                  FillPortions: =0
+                  Height: =20
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =16
+                  LayoutJustifyContent: =LayoutJustifyContent.End
+                  LayoutMaxHeight: =
+                  LayoutMaxWidth: =
+                  PaddingLeft: =5
+                  PaddingRight: =5
+                Children:
+                  - TextCanvas8_1:
+                      Control: ModernText@1.0.0
+                      Properties:
+                        Align: =Align.Right
+                        AlignInContainer: =AlignInContainer.Center
+                        FillPortions: =1
+                        Height: =20
+                        LayoutMinWidth: =96
+                        PaddingBottom: =0
+                        PaddingRight: =0
+                        PaddingTop: =0
+                        RadiusBottomLeft: =0
+                        RadiusBottomRight: =0
+                        RadiusTopLeft: =0
+                        RadiusTopRight: =0
+                        Size: =12
+                        Text: =varFooterText
+                        Width: =96
