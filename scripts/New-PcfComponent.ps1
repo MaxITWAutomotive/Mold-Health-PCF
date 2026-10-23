@@ -1,4 +1,4 @@
-# Scaffolds a new PCF project and wires it into MaxCustomPCFs (run from repo root on Windows).
+# Scaffolds a new PCF project under MaxCustomPCFs and wires it into the solution (run from repo root on Windows).
 param(
     [Parameter(Mandatory = $true)]
     [string]$Name,
@@ -8,27 +8,27 @@ param(
 
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
-Set-Location $repoRoot
+$solutionDir = Join-Path $repoRoot "MaxCustomPCFs"
+Set-Location $solutionDir
 
 if (-not (Get-Command pac -ErrorAction SilentlyContinue)) {
     throw "Power Platform CLI (pac) is not on PATH. Install: https://learn.microsoft.com/power-platform/developer/cli/introduction"
 }
 
 if (Test-Path $Name) {
-    throw "Folder '$Name' already exists."
+    throw "Folder 'MaxCustomPCFs\$Name' already exists."
 }
 
-Write-Host "Creating PCF project '$Name'..."
+Write-Host "Creating PCF project '$Name' in MaxCustomPCFs..."
 pac pcf init --name $Name --namespace $Namespace --control-type standard --run-npm-install
 
-Set-Location $repoRoot\MaxCustomPCFs
 Write-Host "Adding project reference to Max Custom PCFs solution..."
-pac solution add-reference --path "..\$Name"
+pac solution add-reference --path ".\$Name"
 
 Write-Host @"
 
 Next steps:
-  1. Implement control in $Name\$Name\
+  1. Implement control in MaxCustomPCFs\$Name\$Name\
   2. Bump control version in ControlManifest.Input.xml when you change behavior
   3. Bump solution version in MaxCustomPCFs\src\Other\Solution.xml before import
   4. Do NOT hand-edit CustomControls or RootComponents in src\Other\ — MSBuild adds them at pack time
